@@ -27,7 +27,7 @@ private let kSWMessageDisplayTime = 1.5
 private let kSWMessageExtraDisplayTimePerPixel = 0.04
 private let kSWMessageAnimationDuration = 0.3
 
-
+@objc(SWMessage)
 public class SWMessage :NSObject {
     
     public static let sharedInstance = SWMessage()
@@ -139,7 +139,7 @@ public class SWMessage :NSObject {
      - Parameter dismissingEnabled: Should the message be dismissed when the user taps/swipes it
      - Parameter overrideStyle: Override default styles using this style object, it has highest priority.
      */
-    public func showNotificationInViewController(viewController: UIViewController, title: String, subtitle: String?, image: UIImage?, type: SWMessageNotificationType, duration: SWMessageDuration, callback: (() -> Void)?, buttonTitle: String?, buttonCallback: (() -> Void)?, atPosition messagePosition: SWMessageNotificationPosition, canBeDismissedByUser dismissingEnabled: Bool, overrideStyle: SWMessageView.Style?=nil) {
+    public func showNotificationInViewController(viewController: UIViewController, title: String, subtitle: String?, image: UIImage?, type: SWMessageNotificationType, duration: SWMessageDuration, callback: (() -> Void)?, buttonTitle: String?, buttonCallback: (() -> Void)?, atPosition messagePosition: SWMessageNotificationPosition, canBeDismissedByUser dismissingEnabled: Bool) {
         // Create the TSMessageView
         let messageView  = SWMessageView(
             title: title,
@@ -152,8 +152,7 @@ public class SWMessage :NSObject {
             buttonTitle: buttonTitle,
             buttonCallback: buttonCallback,
             position: messagePosition,
-            dismissingEnabled: dismissingEnabled,
-            style: overrideStyle
+            dismissingEnabled: dismissingEnabled
         )
         messageView.fadeOut = { [weak messageView, weak self] in
             if let messageView = messageView {
@@ -276,8 +275,8 @@ public class SWMessage :NSObject {
         switch(currentView.duration) {
         case .Automatic:
             durationToPresent = kSWMessageAnimationDuration + kSWMessageDisplayTime + NSTimeInterval(currentView.frame.size.height) * kSWMessageExtraDisplayTimePerPixel
-        case .Custom(let timeInterval):
-            durationToPresent = timeInterval
+//        case .Custom(let timeInterval):
+//            durationToPresent = timeInterval
         default:
             break
         }
