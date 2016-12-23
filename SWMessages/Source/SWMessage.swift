@@ -91,7 +91,7 @@ open class SWMessage :NSObject {
      - Parameter type: The notification type (Message, Warning, Error, Success)
      */
     open func showNotificationInViewController(_ viewController: UIViewController, title: String, subtitle: String, type: SWMessageNotificationType) {
-        showNotificationInViewController(viewController, title: title, subtitle: subtitle, image: nil, type: type, duration: .automatic, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: .top, canBeDismissedByUser: true)
+        showNotificationInViewController(viewController: viewController, title: title, subtitle: subtitle, image: nil, type: type, duration: .automatic, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: .top, canBeDismissedByUser: true)
     }
     
     /**
@@ -106,7 +106,7 @@ open class SWMessage :NSObject {
      - Parameter duration: The duration of the notification being displayed  (Automatic, Endless, Custom)
      */
     open func showNotificationInViewController(_ viewController: UIViewController, title: String, subtitle: String?, type: SWMessageNotificationType, duration: SWMessageDuration) {
-        showNotificationInViewController(viewController, title: title, subtitle: subtitle, image: nil, type: type, duration: duration, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: .top, canBeDismissedByUser: true)
+        showNotificationInViewController(viewController: viewController, title: title, subtitle: subtitle, image: nil, type: type, duration: duration, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: .top, canBeDismissedByUser: true)
     }
     
     /** Shows a notification message in a specific view controller with a specific duration
@@ -119,7 +119,7 @@ open class SWMessage :NSObject {
      - Parameter dismissingEnabled: Should the message be dismissed when the user taps/swipes it
      */
     open func showNotificationInViewController(_ viewController: UIViewController, title: String, subtitle: String, type: SWMessageNotificationType, duration: SWMessageDuration, canBeDismissedByUser dismissingEnabled: Bool) {
-        showNotificationInViewController(viewController, title: title, subtitle: subtitle, image: nil, type: type, duration: duration, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: .top, canBeDismissedByUser: dismissingEnabled)
+        showNotificationInViewController(viewController: viewController, title: title, subtitle: subtitle, image: nil, type: type, duration: duration, callback: nil, buttonTitle: nil, buttonCallback: nil, atPosition: .top, canBeDismissedByUser: dismissingEnabled)
     }
     
     /**
