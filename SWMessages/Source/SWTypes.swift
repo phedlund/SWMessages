@@ -24,29 +24,29 @@
 import Foundation
 
 @objc public enum SWMessageNotificationPosition: Int {
-    case Top
-    case NavBarOverlay
-    case Bottom
+    case top
+    case navBarOverlay
+    case bottom
 }
 
 @objc public enum SWMessageNotificationType: Int {
-    case Message
-    case Warning
-    case Error
-    case Success
+    case message
+    case warning
+    case error
+    case success
 }
 
 @objc public enum SWMessageDuration: Int  {
-    case Automatic
-    case Endless
-//    case Custom(NSTimeInterval)
+    case automatic
+    case endless
+//    case custom(TimeInterval)
 }
 
 public func == (a: SWMessageDuration, b: SWMessageDuration) -> Bool {
     switch (a, b) {
-    case (.Automatic, .Automatic): return true
-    case (.Endless, .Endless): return true
-//    case (.Custom(let a), .Custom(let b)): return a == b
+    case (.automatic, .automatic): return true
+    case (.endless, .endless): return true
+//    case (.custom(let a), .custom(let b)): return a == b
     default: return false
     }
 }
