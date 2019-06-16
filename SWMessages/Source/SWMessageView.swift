@@ -200,16 +200,16 @@ open class SWMessageView :UIView , UIGestureRecognizerDelegate {
         // Set up button (if set)
         if let buttonTitle = buttonTitle , buttonTitle.characters.count > 0 {
             button = UIButton(type: .custom)
-            button?.setTitle(buttonTitle, for: UIControlState())
+            button?.setTitle(buttonTitle, for: UIControl.State())
             let buttonTitleTextColor = options.textColor
-            button?.setTitleColor(buttonTitleTextColor, for: UIControlState())
+            button?.setTitleColor(buttonTitleTextColor, for: UIControl.State())
             button?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14.0)
             if let shadowColor = options.textShadowColor,let shadowOffset = options.shadowOffset {
                 button?.titleLabel?.shadowColor = shadowColor
                 button?.titleLabel?.shadowOffset = shadowOffset
             }
             button?.addTarget(self, action: #selector(SWMessageView.buttonTapped(_:)), for: .touchUpInside)
-            button?.contentEdgeInsets = UIEdgeInsetsMake(0.0, 5.0, 0.0, 5.0)
+            button?.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
             button?.sizeToFit()
             button?.frame = CGRect(x: screenWidth - padding - button!.frame.size.width, y: 0.0, width: button!.frame.size.width, height: 31.0)
             addSubview(button!)
@@ -292,10 +292,10 @@ open class SWMessageView :UIView , UIGestureRecognizerDelegate {
                     topOffset = -30.0
                 }
             }
-            backgroundFrame = UIEdgeInsetsInsetRect(backgroundFrame, UIEdgeInsetsMake(topOffset, 0.0, 0.0, 0.0))
+            backgroundFrame = backgroundFrame.inset(by: UIEdgeInsets(top: topOffset, left: 0.0, bottom: 0.0, right: 0.0))
         }
         else if messagePosition == .bottom {
-            backgroundFrame = UIEdgeInsetsInsetRect(backgroundFrame, UIEdgeInsetsMake(0.0, 0.0, -30.0, 0.0))
+            backgroundFrame = backgroundFrame.inset(by: UIEdgeInsets(top: 0.0, left: 0.0, bottom: -30.0, right: 0.0))
         }
         backgroundView.frame = backgroundFrame
         return currentHeight
@@ -315,16 +315,16 @@ open class SWMessageView :UIView , UIGestureRecognizerDelegate {
     }
     
     
-    func fadeMeOut() {
+    @objc func fadeMeOut() {
         fadeOut?()
     }
     
-    func buttonTapped(_ sender: AnyObject) {
+    @objc func buttonTapped(_ sender: AnyObject) {
         buttonCallback?()
         fadeMeOut()
     }
     
-    func handleTap(_ tapGesture: UITapGestureRecognizer) {
+    @objc func handleTap(_ tapGesture: UITapGestureRecognizer) {
         if tapGesture.state == .recognized {
             callback?()
         }

@@ -224,7 +224,7 @@ open class SWMessage :NSObject {
         }
         if (currentView.viewController is  UINavigationController) || (currentView.viewController.parent is UINavigationController) {
             let currentNavigationController = currentView.viewController as? UINavigationController ?? currentView.viewController.parent as! UINavigationController
-            var isViewIsUnderStatusBar: Bool = (currentNavigationController.childViewControllers[0].edgesForExtendedLayout == .all)
+            var isViewIsUnderStatusBar: Bool = (currentNavigationController.children[0].edgesForExtendedLayout == .all)
             if !isViewIsUnderStatusBar && currentNavigationController.parent == nil {
                 isViewIsUnderStatusBar = !SWMessage.isNavigationBarInNavigationControllerHidden(currentNavigationController)
                 // strange but true
@@ -300,7 +300,7 @@ open class SWMessage :NSObject {
         }
     }
     
-    func fadeOutNotification(_ currentView: SWMessageView) {
+    @objc func fadeOutNotification(_ currentView: SWMessageView) {
         fadeOutNotification(currentView, animationFinishedBlock: nil)
     }
     
